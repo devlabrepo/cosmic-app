@@ -4,7 +4,6 @@ package devlab.controllers;
 import devlab.models.Planet;
 import devlab.models.dtos.PlanetDto;
 import devlab.services.PlanetService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,14 +59,4 @@ public class PlanetController {
         return planetService.getPlanetsDto();
     }
 
-
-    @Controller
-    public static class HomeController {
-
-        @GetMapping("/")
-        public String homePage() {
-            return "index";
-        }
-
-    }
 }
