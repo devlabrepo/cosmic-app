@@ -1,15 +1,31 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="planets">
 
+    <div class="row" style="margin: 1vh">
 
+        <div class="card col-xs-12 col-sm-12 col-md-6 col-xl-4" style="background-color: rgba(255,255,255,.4);" th:each="p : ${planets}">
 
-<div xmlns:th="http://www.thymeleaf.org" th:fragment="planets">
-    <div class="card" style="width: 18rem;" th:each="p : ${planets}">
-        <img class="card-img-top" th:src="@{${p.getPlanetImage()}}"
-             alt="some planet" style="width: auto; height: 90px">
-        <div class="card-body">
-            <h5 class="card-title" style="color: white" th:text="${p.getPlanetName()}"></h5>
-            <p class="card-text" th:text="${p.getPlanetInfo()}"></p>
-            <a href="#" class="btn btn-primary">more info</a>
+            <!-- Heading -->
+            <div class="card-body">
+                <h4 class="card-title" th:text="${p.getPlanetName()}"></h4>
+            </div>
+
+            <!-- Image -->
+            <img  th:src="@{${p.getPlanetImage()}}" alt="Photo of planet" style="height: auto;width: 48%">
+
+            <!-- Text Content -->
+            <div class="card-body">
+                <p class="card-text" th:text="${p.getPlanetInfo()}"></p>
+                <a class="btn btn-sm btn-warning" th:href="@{/}"><p class="card-text"> more about &nbsp<span th:text="${p.getPlanetName()}"></span></p></a>
+            </div>
+
         </div>
-    </div>
 
+
+
+
+    </div>
 </div>
+
+
+
+
