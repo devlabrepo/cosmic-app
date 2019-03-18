@@ -1,6 +1,7 @@
 package devlab.controllers;
 
 
+import devlab.commons.annotations.ApiVersionPrefix;
 import devlab.models.Planet;
 import devlab.models.dtos.PlanetDto;
 import devlab.services.PlanetService;
@@ -8,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@ApiVersionPrefix // wlasna adnotacja dodajaca "/api/v1"
 @CrossOrigin
 @RestController
-@RequestMapping("/api/v1")
+//@RequestMapping(path = "${api.path}") //- patrz application.properties -> api.path
 public class PlanetController {
 
     private PlanetService planetService;

@@ -36,7 +36,6 @@ public class HomeController {
         return "index";
     }
 
-
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/planets")
     public String planetPage(Model model) {
