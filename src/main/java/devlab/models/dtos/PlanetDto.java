@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,4 +22,5 @@ public class PlanetDto {
     private String planetType;
     private String planetInfo;
     private String planetImage;
+    private List<String> tags = new ArrayList<>();
 }
