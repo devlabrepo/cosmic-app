@@ -2,18 +2,18 @@ package devlab.controllers;
 
 
 
+import devlab.commons.annotations.ApiVersionPrefix;
 import devlab.models.dtos.TagDto;
 import devlab.services.TagService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1")
+@ApiVersionPrefix
 public class TagController {
 
     private TagService tagService;
