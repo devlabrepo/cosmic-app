@@ -1,5 +1,7 @@
 package devlab.services;
 
+import devlab.exceptions.PlanetAlreadyExistException;
+import devlab.exceptions.PlanetNotfoundException;
 import devlab.mappers.PlanetMapper;
 import devlab.models.Planet;
 import devlab.models.dtos.PlanetDto;
@@ -7,6 +9,7 @@ import devlab.repositories.PlanetRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,24 +49,26 @@ public class PlanetService {
     }
 
     public Planet addPlanet(PlanetDto planetDto) {
-        return planetRepository.save(planetMapper.reverseMap(planetDto));
+        return Optional
+                .of(planetRepository.save(planetMapper.reverseMap(planetDto)))
+                .orElseThrow(PlanetAlreadyExistException::new);
     }
 
     public void updatePlanet(PlanetDto planetDto) {
 
-        planetRepository
-                .findPlanetByPlanetName(planetDto.getPlanetName())
-                .ifPresent(p -> {
+            planetRepository
+                    .findPlanetByPlanetName(planetDto.getPlanetName())
+                    .ifPresent(p -> {
 
-                    p.setDistanceFromSun(planetDto.getDistanceFromSun());
-                    p.setOneWayLightTimeToTheSun(planetDto.getOneWayLightTimeToTheSun());
-                    p.setLengthOfYear(planetDto.getLengthOfYear());
-                    p.setPlanetType(planetDto.getPlanetType());
-                    p.setPlanetInfo(planetDto.getPlanetInfo());
-                    p.setPlanetImage(planetDto.getPlanetImage());
+                        p.setDistanceFromSun(planetDto.getDistanceFromSun());
+                        p.setOneWayLightTimeToTheSun(planetDto.getOneWayLightTimeToTheSun());
+                        p.setLengthOfYear(planetDto.getLengthOfYear());
+                        p.setPlanetType(planetDto.getPlanetType());
+                        p.setPlanetInfo(planetDto.getPlanetInfo());
+                        p.setPlanetImage(planetDto.getPlanetImage());
 
-                    planetRepository.save(p);
-                });
+                        planetRepository.save(p);
+                    });
     }
 
     public void deletePlanet(String planetName) {

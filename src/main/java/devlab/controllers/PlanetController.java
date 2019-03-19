@@ -5,9 +5,11 @@ import devlab.commons.annotations.ApiVersionPrefix;
 import devlab.models.Planet;
 import devlab.models.dtos.PlanetDto;
 import devlab.services.PlanetService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @ApiVersionPrefix // wlasna adnotacja dodajaca "/api/v1"
 @CrossOrigin
@@ -44,7 +46,7 @@ public class PlanetController {
 
     @PutMapping("/dto/planets")
     public void updatePlanet(@RequestBody PlanetDto planetDto) {
-        planetService.updatePlanet(planetDto);
+         planetService.updatePlanet(planetDto);
     }
 
     @DeleteMapping("/dto/planets/{planetName}")
